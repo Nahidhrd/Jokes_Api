@@ -1,0 +1,25 @@
+<resources>
+
+    <string name="app_name">jokes api demo</string>
+    <string-array name="jokes_categories">
+        <item>Any</item>
+        <item>Programming</item>
+        <item>Miscellaneous</item>
+        <item>Dark</item>
+        <item>Pun</item>
+        <item>Spooky</item>
+        <item>Christmas</item>
+    </string-array>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="Home"> Home </string>
+    <string name="Favourite"> Favourite </string>
+
+    <string name="favourite_jokes">Favourite Jokes</string>
+    <string name="generate_jokes" > Generate Jokes </string>
+    <string name="choose_jokes_category">Select Category </string>
+    <string name="generate_new_jokes" >Generate New Jokes </string>
+    <string name="favorite_button">Favorite Button</string>
+</resources>
