@@ -24,10 +24,12 @@ class HomeFragment() : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this.viewLifecycleOwner
 
+
         val categoriesList = arrayOf("Any", "Programming", "Miscellaneous", "Dark", "Pun", "Spooky", "Christmas")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categoriesList)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategory.adapter = adapter
+
 
         setListener()
         allObserver()
@@ -37,13 +39,15 @@ class HomeFragment() : Fragment() {
 
     private fun setListener() {
         binding.btnGenerateJokes.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
             val selectedCategory = binding.spinnerCategory.selectedItem.toString()
             viewModel.getRandomJokes(selectedCategory)
         }
 
-        binding.btnFavorite.setOnClickListener {
+            binding.btnFavorite.setOnClickListener {
             viewModel.saveJokes()
             binding.btnFavorite.setImageResource(R.drawable.ic_favorite_24)
+
         }
     }
 
@@ -51,6 +55,7 @@ class HomeFragment() : Fragment() {
         viewModel._responseJokesData.observe(viewLifecycleOwner){data->
             data?.let {
                 binding.tvGenerateJokes.visibility = View.GONE
+                binding.progressBar.visibility = View.GONE
                 if (data.jokes == null){
                     viewModel.jokeSetup.postValue(data.setup ?: "")
                     viewModel.delivery.postValue(data.delivery ?: "")
